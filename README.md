@@ -1,4 +1,4 @@
-# Gtkmm-Application-Template
+# gtkmm-project
 
 Simple template to write Gtkmm applications using CMake and Glade
 
