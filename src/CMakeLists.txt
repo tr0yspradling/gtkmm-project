@@ -1,23 +1,24 @@
-add_executable(${PROJECT_NAME}
-    main.cpp
-    application.cpp
-    window.cpp
-    preferences.cpp
-    ${GENERATED_DATA_DIR}/resources.c
-    )
+set(GENERATED_FILES_DIR ${PROJECT_BINARY_DIR}/generated)
 
-target_link_libraries(${PROJECT_NAME}
-    GTKMM
-    )
+set(GENERATED_DATA_DIR ${GENERATED_FILES_DIR}/data)
+FILE(GLOB SOURCES *.cpp)
+
+add_executable(
+   ${PROJECT_NAME}
+   ${SOURCES}
+   ${GENERATED_DATA_DIR}/resources.c
+)
+
+target_link_libraries(
+   ${PROJECT_NAME}
+   GTKMM
+)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${GENERATED_SOURCES_DIR})
 
 compile_resources(
-    ${GENERATED_DATA_DIR}/resources.c
-    window.glade
-    headerbar.glade
-    menu.glade
-    preferences.glade
-    )
+   ${GENERATED_DATA_DIR}/resources.c
+   ${GENERATED_DATA_DIR/ui}
+)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)

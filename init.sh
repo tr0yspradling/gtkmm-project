@@ -1,17 +1,4 @@
-#!/bin/sh
-
-function init_project {
-	IFS="." read -a ID_PARTS <<< "${1}"
-
-	sed -i -e "s/_APPLICATION_ID_/${1}/g" CMakeLists.txt
-	sed -i -e "s/_PROJECT_NAME_/${ID_PARTS[-1]}/g" CMakeLists.txt
-	
-	rm -rf .git*
-	rm -f README.md
-	rm -f init.sh
-
-	echo "Project initialized as '${1}'"
-}
+#!/bin/bash
 
 DEFAULT_PROJECT_ID="org.gtkmm.ApplicationTemplate"
 
@@ -22,4 +9,13 @@ then
 	PROJECT_ID=$DEFAULT_PROJECT_ID
 fi
 
-init_project $PROJECT_ID
+IFS="." read -a ID_PARTS <<< "$PROJECT_ID"
+
+sed -i -e "s/_APPLICATION_ID_/$PROJECT_ID/g" CMakeLists.txt
+sed -i -e "s/_PROJECT_NAME_/${ID_PARTS[-1]}/g" CMakeLists.txt
+
+rm -rf .git*
+rm -f README.md
+rm -f init.sh
+
+echo "Project initialized as '$PROJECT_ID'"
