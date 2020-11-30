@@ -8,18 +8,19 @@
 #include <gtkmm/label.h>
 
 class Window : public Gtk::ApplicationWindow {
-    public:
-    Window(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+public:
+    Window(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &builder);
+
     virtual ~Window();
 
-    static Window* create();
+    static Window *create();
 
-    private:
-    Glib::RefPtr<Gtk::Builder>  builder;
+private:
+    Glib::RefPtr<Gtk::Builder> builder;
     Glib::RefPtr<Gio::Settings> settings;
-    Gtk::HeaderBar*             headerBar;
-    Gtk::Label*                 firstLabel;
-    Gtk::Label*                 secondLabel;
+    Gtk::HeaderBar *headerBar;
+    Gtk::Label *firstLabel;
+    Gtk::Label *secondLabel;
 
     void setHeaderBar();
 };

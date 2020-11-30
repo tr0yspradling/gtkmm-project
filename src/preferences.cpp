@@ -3,7 +3,7 @@
 #include "projectdefinitions.h"
 
 Preferences::Preferences(BaseObjectType *cobject, const Glib::RefPtr<Gtk::Builder> &builder)
-    : Gtk::Dialog(cobject), builder(builder), settings(nullptr), comboBoxText(nullptr), checkButton(nullptr) {
+        : Gtk::Dialog(cobject), builder(builder), settings(nullptr), comboBoxText(nullptr), checkButton(nullptr) {
     builder->get_widget("comboBoxText", comboBoxText);
     if (!comboBoxText) {
         throw std::runtime_error("No \"comboBoxText\" object in preferences.glade");
@@ -23,7 +23,8 @@ Preferences::~Preferences() {
 }
 
 Preferences *Preferences::create(Gtk::Window &parent) {
-    auto builder = Gtk::Builder::create_from_resource(projectdefinitions::getApplicationPrefix() + "ui/preferences.glade");
+    auto builder = Gtk::Builder::create_from_resource(
+            projectdefinitions::getApplicationPrefix() + "ui/preferences.glade");
 
     Preferences *prefsDialog = nullptr;
     builder->get_widget_derived("prefsDialog", prefsDialog);

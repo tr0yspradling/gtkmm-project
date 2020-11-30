@@ -47,7 +47,7 @@ void Application::on_startup() {
         return;
     }
 
-    auto object   = builder->get_object("appmenu");
+    auto object = builder->get_object("appmenu");
     auto app_menu = Glib::RefPtr<Gio::MenuModel>::cast_dynamic(object);
     if (app_menu) {
         set_app_menu(app_menu);
